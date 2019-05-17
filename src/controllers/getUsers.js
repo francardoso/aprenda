@@ -1,5 +1,3 @@
-module.exports = getUsers;
-
 function getUsers(req, res){
     const users =  [
         {
@@ -15,6 +13,6 @@ function getUsers(req, res){
             id: 'Arely'
         }
     ];
-
     res.send(users);
 }
+module.exports = getUsers;

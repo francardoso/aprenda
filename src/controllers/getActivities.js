@@ -1,5 +1,3 @@
-module.exports = getActivities;
-
 function getActivities(req, res){
     const activities = [
         {
@@ -21,3 +19,5 @@ function getActivities(req, res){
 
     res.send(activities);
 }
+
+module.exports = getActivities;
