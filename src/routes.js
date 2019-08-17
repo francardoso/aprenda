@@ -7,10 +7,12 @@ function routesInit(app){
     app.get('/', (req, res)=>{
         res.send('Hello from Aprenda');
     });
-    app.get('/getUsers', getUsersController);
-    app.get('/getActivities', getActivitiesController);
     app.post('/login', loginController);
+    
     app.post('/addUser', addUserController);
+    app.get('/getUsers', getUsersController);
+
+    app.get('/getActivities', getActivitiesController);
 }
  
 module.exports = routesInit;
