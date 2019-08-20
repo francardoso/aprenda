@@ -5,7 +5,16 @@ async function login(req, res){
         res.status(400).send(validationMessage);
     }else{
         const ans = await loginModel(req.body);
-        res.status(200).send(ans);
+        if(!ans.err){
+            if(!req.session.APRENDA){
+                req.session.APRENDA = {};
+            }
+            req.session.APRENDA.idUser = ans.idUser;
+            res.status(200).send(ans.idUser);
+
+        }else{
+            res.status(200).send(ans.err);
+        }
     }
 };
 

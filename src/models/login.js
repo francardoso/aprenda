@@ -12,7 +12,7 @@ async function login(context){
                 error: 'PASSWORD_INCORRECT'
             }
         }else{
-            return 'LOGOU'
+            return {idUser: user._id}
         }
     }
 }

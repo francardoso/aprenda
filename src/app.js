@@ -24,7 +24,7 @@ db.once('open', () =>{
     initServer();
 });
 
-function initServer(){//Session of user
+function initServer(){
     // session
     app.set('trust proxy', 1); // trust first proxy
     app.use(session({
