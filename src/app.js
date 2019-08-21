@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const routesInit = require('./routes');
@@ -25,6 +26,10 @@ db.once('open', () =>{
 });
 
 function initServer(){
+    app.use(cors({
+        origin: settings.CORS_ALLOWED_URL,
+        optionsSuccessStatus: 200
+    }));
     // session
     app.set('trust proxy', 1); // trust first proxy
     app.use(session({
@@ -34,7 +39,12 @@ function initServer(){
         cookie: {secure:false}, // MAYBE WILL HAVE TO CHANGE ON PRODUCTION
         store: new FileStore
     }));
-    app.use(bodyParser.json());    
+    app.use(bodyParser.json());
+    // routes debbug 
+    app.use((req,res,next)=>{
+        console.log(req.method, req.url);
+        next();
+    }); 
     routesInit(app);    
     app.listen(settings.PORT, () => console.log(`Server Listening on port ${settings.PORT}`));
 }

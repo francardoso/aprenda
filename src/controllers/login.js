@@ -2,10 +2,10 @@ const loginModel = require('../models/login');
 async function login(req, res){
     const validationMessage = validateParameters(req.body);
     if(validationMessage){
-        res.status(400).send(validationMessage);
+        res.status(400).json({error:validationMessage});
     }else{
         const ans = await loginModel(req.body);
-        if(!ans.err){
+        if(!ans.error){
             if(!req.session.APRENDA){
                 req.session.APRENDA = {};
             }
@@ -13,7 +13,7 @@ async function login(req, res){
             res.status(200).send(ans.idUser);
 
         }else{
-            res.status(200).send(ans.err);
+            res.status(200).json(ans);
         }
     }
 };
