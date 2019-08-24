@@ -28,6 +28,7 @@ db.once('open', () =>{
 function initServer(){
     app.use(cors({
         origin: settings.CORS_ALLOWED_URL,
+        credentials:true,
         optionsSuccessStatus: 200
     }));
     // session
