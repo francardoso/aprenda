@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const FileStore = require('session-file-store')(session);
+const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
@@ -8,7 +9,7 @@ const routesInit = require('./routes');
 const bodyParser = require('body-parser');
 const settings = require('../settings');
 
-mongoose.connect('mongodb://localhost:27017/aprenda',
+mongoose.connect(settings.DB_URL,
     {
         useNewUrlParser: true,
         useFindAndModify: false
@@ -38,7 +39,9 @@ function initServer(){
         resave: true,
         saveUninitialized: true,
         cookie: {secure:false}, // MAYBE WILL HAVE TO CHANGE ON PRODUCTION
-        store: new FileStore
+        store: new MongoStore({
+            url: settings.DB_URL
+        })
     }));
     app.use(bodyParser.json());
     // routes debbug 

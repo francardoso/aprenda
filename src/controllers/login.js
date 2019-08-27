@@ -10,6 +10,7 @@ async function login(req, res){
                 req.session.APRENDA = {};
             }
             req.session.APRENDA.idUser = ans.idUser;
+            req.session.APRENDA.role = ans.role;
             res.status(200).send(ans.idUser);
 
         }else{
