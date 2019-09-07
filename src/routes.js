@@ -1,10 +1,11 @@
 const getUsersController = require('./controllers/getUsers');
-const getActivitiesController = require('./controllers/getActivities');
 const loginController = require('./controllers/login');
 const addUserController = require('./controllers/addUser');
 const deleteUserController = require('./controllers/deleteUser');
 const isLoggedController = require('./controllers/isLogged');
 const getUserByLoginController = require('./controllers/getUserByLogin');
+const addLessonController = require('./controllers/addLesson');
+const getAllLessonsController = require('./controllers/getAllLessons');
 
 function routesInit(app){
     app.get('/', (req, res)=>{
@@ -19,7 +20,8 @@ function routesInit(app){
     app.delete('/deleteUser', deleteUserController);
     app.get('/getUsers', getUsersController);
 
-    app.get('/getActivities', getActivitiesController);
+    app.post('/addLesson', addLessonController);
+    app.get('/getAllLessons', getAllLessonsController);
 }
  
 module.exports = routesInit;
