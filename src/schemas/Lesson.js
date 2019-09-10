@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const Lesson = new mongoose.Schema({
+    title: {
+        type: String,
+    },
     students: [
         mongoose.SchemaTypes.ObjectId
     ],
@@ -10,13 +13,11 @@ const Lesson = new mongoose.Schema({
             type: {
                 type: String,
                 default: 'single',
-                required: true,
             },
             title: {
                 type: String,
-                required: true,
             },
-            alternatives: [
+            options: [
                 {
                     _id: false,
                     order: Number,
@@ -27,12 +28,11 @@ const Lesson = new mongoose.Schema({
 
         }
     ],
-    // students: [],
-    // questions: [],
 });
 
 module.exports = mongoose.model('Lesson', Lesson);
 // const lesson = {
+//     title: 'avaliacao 1',
 //     id: 'aa7171a8',
 //     students: ['idaw3','aiawi12', 'wiaw'],
 //     questions: [
