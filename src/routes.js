@@ -6,6 +6,7 @@ const isLoggedController = require('./controllers/isLogged');
 const getUserByLoginController = require('./controllers/getUserByLogin');
 const addLessonController = require('./controllers/addLesson');
 const getAllLessonsController = require('./controllers/getAllLessons');
+const getLessonController = require('./controllers/getLesson');
 
 function routesInit(app){
     app.get('/', (req, res)=>{
@@ -20,6 +21,7 @@ function routesInit(app){
     app.delete('/deleteUser', deleteUserController);
     app.get('/getUsers', getUsersController);
 
+    app.get('/getLesson', getLessonController);
     app.post('/addLesson', addLessonController);
     app.get('/getAllLessons', getAllLessonsController);
 }
