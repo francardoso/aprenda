@@ -1,5 +1,6 @@
 const getUsersController = require('./controllers/getUsers');
 const loginController = require('./controllers/login');
+const logoutController = require('./controllers/logout');
 const addUserController = require('./controllers/addUser');
 const deleteUserController = require('./controllers/deleteUser');
 const isLoggedController = require('./controllers/isLogged');
@@ -17,6 +18,7 @@ function routesInit(app){
 
     app.post('/login', loginController);
     app.get('/isLogged', isLoggedController);
+    app.post('/logout', logoutController);
     
     app.post('/addUser', addUserController);
     app.get('/getUserByLogin', getUserByLoginController);
