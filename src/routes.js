@@ -8,6 +8,7 @@ const addLessonController = require('./controllers/addLesson');
 const getAllLessonsController = require('./controllers/getAllLessons');
 const getLessonController = require('./controllers/getLesson');
 const enrollStudentsController = require('./controllers/enrollStudents');
+const unenrollStudentsController = require('./controllers/unenrollStudents');
 
 function routesInit(app){
     app.get('/', (req, res)=>{
@@ -26,6 +27,7 @@ function routesInit(app){
     app.post('/addLesson', addLessonController);
     app.get('/getAllLessons', getAllLessonsController);
     app.put('/enrollStudents', enrollStudentsController);
+    app.put('/unenrollStudents', unenrollStudentsController);
 }
  
 module.exports = routesInit;
