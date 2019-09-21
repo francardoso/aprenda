@@ -1,7 +1,13 @@
 const User = require('../schemas/User');
 async function getUsers(context){
     const users = await findUsers();
-    return users;
+    const usersInformations = users.map(user=>({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+    }))
+    return usersInformations;
 };
 
 function findUsers(){

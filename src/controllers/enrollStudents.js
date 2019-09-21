@@ -2,7 +2,7 @@ const enrollStudentsModel = require('../models/enrollStudents');
 async function enrollStudents(req, res){
     const validationMessage = validateParameters(req.body);
     if(validationMessage){
-        res.status(400).send(validationMessage);
+        res.status(400).send({error: validationMessage});
     }else{
         const ans = await enrollStudentsModel(req.body);
         if(!ans.error){

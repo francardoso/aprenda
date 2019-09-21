@@ -14,7 +14,7 @@ async function unenrollStudents (context){
 
     const lessonWithUpdatedStudents = await enrollStudentsToLesson(idLesson, updateStudents);
 
-    return lessonWithUpdatedStudents;
+    return lessonWithUpdatedStudents.students;
 };
 
 function findLesson(id){

@@ -14,7 +14,7 @@ async function enrollStudents(context){
 
     const lessonWithNewStudents = await enrollStudentsToLesson(idLesson,[...previousStudents, ...newStudents]);
     
-    return lessonWithNewStudents;
+    return lessonWithNewStudents.students;
 
 };
 
