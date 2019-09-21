@@ -7,6 +7,7 @@ const getUserByLoginController = require('./controllers/getUserByLogin');
 const addLessonController = require('./controllers/addLesson');
 const getAllLessonsController = require('./controllers/getAllLessons');
 const getLessonController = require('./controllers/getLesson');
+const enrollStudentsController = require('./controllers/enrollStudents');
 
 function routesInit(app){
     app.get('/', (req, res)=>{
@@ -24,6 +25,7 @@ function routesInit(app){
     app.get('/getLesson', getLessonController);
     app.post('/addLesson', addLessonController);
     app.get('/getAllLessons', getAllLessonsController);
+    app.put('/enrollStudents', enrollStudentsController);
 }
  
 module.exports = routesInit;
