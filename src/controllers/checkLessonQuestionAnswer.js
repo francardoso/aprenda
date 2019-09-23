@@ -11,9 +11,10 @@ async function checkLessonQuestionAnswer(req,res){
 };
 
 function validateParameters(body){
-    const { idLesson, questionIndex, answer } = body;
+    const { idLesson, idStudent,questionIndex, answer } = body;
 
     if(typeof idLesson !== 'string' || idLesson === "") return "INVALID ID LESSON";
+    if(typeof idStudent !== 'string' || idStudent === "") return "INVALID ID STUDENT";
     if(isNaN(questionIndex)) return "INVALID QUESTION INDEX";
     if(answer && !Array.isArray(answer)) return "INVALID ARRAY OF ANSWER"
 

@@ -1,17 +1,28 @@
 const Lesson = require('../schemas/Lesson');
+const updateAnswer = require('./updateAnswer');
 
 async function checkLessonQuestionAnswer(context){
-    const { idLesson, questionIndex, answer = [] } = context;
+    const { idLesson, questionIndex, answer = [], idStudent } = context;
     const lesson = await findLesson(idLesson);
     if(!lesson) return {error: 'LESSON NOT FOUND'};
     const question = lesson.questions[questionIndex]
-    const lessonAnswers = question.options.reduce((acc, option, index)=>{
+    const questionAnswers = question.options.reduce((acc, option, index)=>{
         if(option.selected){
             acc.push(index);
         }
         return acc;
     },[]);
-    const correct = compareAnswer(answer, lessonAnswers);
+    const correct = compareAnswer(answer, questionAnswers);
+
+    await updateAnswer({
+        idLesson,
+        idStudent,
+        question: {
+            index: questionIndex,
+            questionAnswers,
+            studentAnswers: answer
+        }
+    });
     return correct;
 };
 
