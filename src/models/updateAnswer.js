@@ -18,7 +18,7 @@ async function updateAnswer(context){
     }
     const newAnswer = await updateLessonAswers(lessonAnswer._id, newQuestions);
     return new Promise((resolve,reject)=>{
-        resolve(null);
+        resolve(newAnswer.questions);
     });
 };
 

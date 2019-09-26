@@ -12,9 +12,8 @@ async function checkLessonQuestionAnswer(context){
         }
         return acc;
     },[]);
-    const correct = compareAnswer(answer, questionAnswers);
 
-    await updateAnswer({
+    const answersComparison = await updateAnswer({
         idLesson,
         idStudent,
         question: {
@@ -23,12 +22,8 @@ async function checkLessonQuestionAnswer(context){
             studentAnswers: answer
         }
     });
-    return correct;
+    return answersComparison;
 };
-
-function compareAnswer(userAns, realAns){
-    return userAns.sort().join(',') === realAns.sort().join(',');
-}
 
 function findLesson(id){
     return new Promise((resolve, reject)=>{

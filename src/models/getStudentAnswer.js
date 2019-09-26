@@ -3,7 +3,8 @@ const Answer = require('../schemas/Answer');
 async function getStudentAnswer(context){
     const { idLesson, idStudent } = context;
     const answer = await findAnswer(idLesson, idStudent);
-    return answer;
+    
+    return answer ? answer.questions : [];
 };
 
 function findAnswer(idLesson, idStudent,){
