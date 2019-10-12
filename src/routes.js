@@ -13,6 +13,7 @@ const unenrollStudentsController = require('./controllers/unenrollStudents');
 const getStudentLessonsController = require('./controllers/getStudentLessons');
 const checkLessonQuestionAnswerController = require('./controllers/checkLessonQuestionAnswer');
 const getStudentAnswerController = require('./controllers/getStudentAnwser');
+const editLessonController = require('./controllers/editLesson');
 
 function routesInit(app){
     app.get('/', (req, res)=>{
@@ -30,6 +31,7 @@ function routesInit(app){
 
     app.get('/getLesson', getLessonController);
     app.post('/addLesson', addLessonController);
+    app.put('/editLesson', editLessonController);
     app.get('/getAllLessons', getAllLessonsController);
     app.get('/getStudentLessons', getStudentLessonsController);
     app.put('/enrollStudents', enrollStudentsController);
