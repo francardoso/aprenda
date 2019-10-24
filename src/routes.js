@@ -15,6 +15,11 @@ const checkLessonQuestionAnswerController = require('./controllers/checkLessonQu
 const getStudentAnswerController = require('./controllers/getStudentAnwser');
 const editLessonController = require('./controllers/editLesson');
 
+const getTotalLessonsController = require('./controllers/reports/getTotalLessons');
+const getAnswersTotalController = require('./controllers/reports/getAnswersTotal');
+const getStudentsTotalController = require('./controllers/reports/getStudentsTotal');
+const getStudentReportController = require('./controllers/reports/getStudentReport');
+
 function routesInit(app){
     app.get('/', (req, res)=>{
         res.send('Hello from Aprenda');
@@ -39,6 +44,11 @@ function routesInit(app){
 
     app.post('/checkLessonQuestionAnswer', checkLessonQuestionAnswerController);
     app.get('/getStudentAnswer', getStudentAnswerController);
+
+    app.get('/getTotalLessons', getTotalLessonsController);
+    app.get('/getAnswersTotal', getAnswersTotalController);
+    app.get('/getStudentsTotal', getStudentsTotalController);
+    app.get('/getStudentReport', getStudentReportController);
 }
  
 module.exports = routesInit;
