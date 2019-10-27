@@ -12,7 +12,8 @@ const settings = require('../settings');
 mongoose.connect(settings.DB_URL,
     {
         useNewUrlParser: true,
-        useFindAndModify: false
+        useFindAndModify: false,
+        useUnifiedTopology: true
     }
 );
 
