@@ -33,10 +33,11 @@ function findLessonAnswers(idLesson){
 }
 
 function joinLessonWithAnswers(lesson, answers){
-    const lessonWithAns = {...lesson};
+    const lessonWithAns = {...lesson, respondents: []};
     answers.forEach((ans) =>{
         const ansObj = ans.toObject();
         ansObj.questions.forEach((quest)=>{
+            lessonWithAns.respondents.push(ansObj.idStudent);
             const isCorrect = checkAnswerToQuestion(quest.studentAnswers, quest.questionAnswers);
             if(isCorrect){
                 if(!lessonWithAns.questions[quest.index].correctStudents){
