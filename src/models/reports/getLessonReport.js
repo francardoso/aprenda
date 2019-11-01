@@ -37,7 +37,9 @@ function joinLessonWithAnswers(lesson, answers){
     answers.forEach((ans) =>{
         const ansObj = ans.toObject();
         ansObj.questions.forEach((quest)=>{
-            lessonWithAns.respondents.push(ansObj.idStudent);
+            if(lessonWithAns.respondents.indexOf(ansObj.idStudent) === -1){
+                lessonWithAns.respondents.push(ansObj.idStudent);
+            }
             const isCorrect = checkAnswerToQuestion(quest.studentAnswers, quest.questionAnswers);
             if(isCorrect){
                 if(!lessonWithAns.questions[quest.index].correctStudents){
